@@ -31,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Center(
         child: StreamBuilder<String?>(
+          stream: cubit.stream,
           builder: (context, snapshot) {
             final button = TextButton(
               onPressed: () => cubit.pickRandomName(),
@@ -43,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 return button;
               case ConnectionState.active:
                 return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(snapshot.data ?? ''),
                     button,
