@@ -36,15 +36,16 @@ class PersonsBloc extends Bloc<LoadAction, FetchResult?> {
       (event, emit) async {
         final url = event.url;
         if (_cache.containsKey(url)) {
-          final cachedPersons = _cache[url];
+          final cachedPersons = _cache[url]!;
           final result =
-              FetchResult(persons: cachedPersons!, isRetrivedFromCache: true);
+              FetchResult(persons: cachedPersons, isRetrivedFromCache: true);
           emit(result);
         } else {
           final persons = await getPersons(url.urlString);
           _cache[url] = persons;
           final result =
               FetchResult(persons: persons, isRetrivedFromCache: false);
+          emit(result);
         }
       },
     );

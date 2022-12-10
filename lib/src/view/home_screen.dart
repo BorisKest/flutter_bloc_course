@@ -1,8 +1,8 @@
 import 'package:bloc_course/src/controller/bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:bloc/bloc.dart';
 import 'package:bloc_course/src/controller/extensions/sub_script.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc_course/src/controller/extensions/log.dart';
 
 enum PersonUrl {
   persons1,
@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
                 onPressed: () {
@@ -52,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
               return previousResult?.persons != currentResult?.persons;
             },
             builder: (context, state) {
+              state?.log();
               final persons = state?.persons;
               if (persons == null) {
                 return const SizedBox();
@@ -63,6 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     final person = persons[index]!;
                     return ListTile(
                       title: Text(person.name),
+                      subtitle: Text(person.age),
                     );
                   },
                 ),

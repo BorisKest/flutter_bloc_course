@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 @immutable
 class Person {
   final String name;
-  final int age;
+  final String age;
 
   const Person({
     required this.name,
@@ -15,7 +15,10 @@ class Person {
 
   Person.fromJson(Map<String, dynamic> json)
       : name = json['name'] as String,
-        age = json['int'];
+        age = json['age'];
+
+  @override
+  String toString() => 'Person (name: $name, age: $age)';
 }
 
 Future<Iterable<Person>> getPersons(String url) => HttpClient()
