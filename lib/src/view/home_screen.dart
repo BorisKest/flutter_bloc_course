@@ -1,3 +1,4 @@
+
 import 'package:bloc_course/src/controller/bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:bloc_course/src/controller/extensions/sub_script.dart';
@@ -17,12 +18,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home screen'),
       ),
+
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
